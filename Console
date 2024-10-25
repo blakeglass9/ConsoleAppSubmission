@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Step 1: Define a one-dimensional array of strings
+        string[] phrases = { "Hello", "Goodbye", "Welcome", "Farewell" };
+
+        // Step 2: Prompt the user for input text
+        Console.WriteLine("Please enter some text to add to each phrase:");
+        string userInput = Console.ReadLine();
+
+        // Step 3: First loop - append the user's text to each string in the array
+        for (int i = 0; i < phrases.Length; i++)
+        {
+            phrases[i] += " " + userInput;  // Appends user input to each element in the array
+        }
+
+        // Step 4: Second loop - print each modified string in the array
+        Console.WriteLine("\nModified phrases:");
+        foreach (string phrase in phrases)
+        {
+            Console.WriteLine(phrase);  // Print each modified phrase
+        }
+
+        // Step 5: Infinite Loop Example (fixed)
+        int counter = 0;
+        while (true)
+        {
+            Console.WriteLine("Counter is: " + counter);
+            counter++;
+
+            if (counter >= 5)
+            {
+                Console.WriteLine("Exiting the loop as the counter reached 5.");
+                break;  // Exit the loop
+            }
+        }
+
+        // Step 6: Loop with the '<' operator
+        Console.WriteLine("\nLoop with '<' operator:");
+        for (int i = 0; i < 3; i++)  // Loop runs while i is less than 3
+        {
+            Console.WriteLine("i is " + i);
+        }
+
+        // Step 7: Loop with the '<=' operator
+        Console.WriteLine("\nLoop with '<=' operator:");
+        for (int i = 0; i <= 3; i++)  // Loop runs while i is less than or equal to 3
+        {
+            Console.WriteLine("i is " + i);
+        }
+
+        // Step 8: Create a list of strings with at least two identical strings
+        List<string> uniqueList = new List<string> { "Car", "Bike", "Boat", "Plane", "Car", "Train" };
+
+        // Prompt the user to input text to search for in the list
+        Console.WriteLine("\nEnter text to search for in the list:");
+        string searchInput = Console.ReadLine();
+
+        // Variable to track if a match is found
+        bool matchFound = false;
+
+        // Step 9: Loop through the list and search for the user's input, returning all matching indices
+        Console.WriteLine("\nSearching for matches...");
+        for (int i = 0; i < uniqueList.Count; i++)
+        {
+            // Use .ToLower() for case-insensitive comparison
+            if (uniqueList[i].ToLower() == searchInput.ToLower())
+            {
+                Console.WriteLine($"Match found at index {i}: {uniqueList[i]}");
+                matchFound = true;  // Set match found to true
+            }
+        }
+
+        // If no match was found, display a message
+        if (!matchFound)
+        {
+            Console.WriteLine("Your input is not on the list.");
+        }
+
+        // Step 10: List of strings with duplicates for the foreach loop task
+        List<string> itemsList = new List<string> { "A", "B", "C", "D", "C" };
+
+        // HashSet to track unique items encountered so far
+        HashSet<string> uniqueItems = new HashSet<string>();
+
+        // Step 11: Foreach loop to identify duplicates and unique items
+        Console.WriteLine("\nChecking for duplicates:");
+        foreach (string item in itemsList)
+        {
+            if (uniqueItems.Contains(item))
+            {
+                Console.WriteLine($"{item} - this item is a duplicate");
+            }
+            else
+            {
+                Console.WriteLine($"{item} - this item is unique");
+                uniqueItems.Add(item);  // Add to unique items set
+            }
+        }
+
+        // Pause to allow the user to see the output
+        Console.ReadKey();
+    }
+}
